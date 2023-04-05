@@ -1,7 +1,7 @@
 node {
 
-   def registryProjet='lb304/'
-   def IMAGE="${registryProjet}app:3.5"
+   def registryProjet='laurent/'
+   def IMAGE="${registryProjet}app:3.8"
 
     stage('Clone') {
           checkout scm
@@ -18,7 +18,7 @@ node {
     }
 
     stage('Push') {
-          docker.withRegistry('https://index.docker.io/v1/', 'hub_docker_id') {
+          docker.withRegistry('https://registry.ludovic.tech', 'harbor_id') {
               img.push 'latest'
               img.push()
           }
